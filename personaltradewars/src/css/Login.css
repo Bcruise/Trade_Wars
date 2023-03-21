@@ -1,0 +1,25 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: calc(100vh - 80px);
+}
+
+.form-main {
+    background-color: aquamarine;
+    height: 100%;
+    width: 100%;
+}
+
+.sign-in-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+.eye {
+    cursor: pointer;
+}

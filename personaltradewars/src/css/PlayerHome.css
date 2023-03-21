@@ -1,0 +1,39 @@
+.playerHome {
+    background-color: lightgrey;
+    height: 100vh;
+}
+
+nav {
+    display: flex;
+    justify-items: flex-start;
+    align-items: center;
+    height: 5rem;
+    padding: 0rem 5rem;
+    background-color: white;
+}
+
+.input-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5rem;
+    background-color: lightblue;
+}
+
+.asset-classes {
+    display: flex;
+    flex-direction: row;
+}
+
+.asset {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.option {
+    border: 1px solid black;
+    background-color: aliceblue;
+}
