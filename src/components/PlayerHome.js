@@ -1,6 +1,10 @@
 import '../css/PlayerHome.css';
 
-function PlayerHome() {
+function PlayerHome({setWhichComponent}) {
+
+  // do show leaderboard link but not return link
+  setWhichComponent('Player Home');
+
   return (
     <div className="playerHome">
         <div className="input-div">

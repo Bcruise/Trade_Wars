@@ -4,5 +4,9 @@ html,body
     height: 100%;
     margin: 0px;
     padding: 0px;
-    overflow-x: hidden; 
+    overflow-x: hidden;
+}
+
+body {
+    background-image: linear-gradient(rgba(16,60,96,0.9), rgba(16,60,96,0.9)), url("./images/login-background.png");
 }

@@ -7,9 +7,15 @@
 }
 
 .form-main {
-    background-color: aquamarine;
+    background-color: #f8f8f8;
     height: 100%;
     width: 100%;
+    color: #333;
+}
+
+.header {
+    font-size: 1.25rem;
+    font-weight: 600;
 }
 
 .sign-in-form {
@@ -18,8 +24,80 @@
     justify-content: center;
     align-items: center;
     height: auto;
+    font-family: 'Roboto', sans-serif;
 }
+
+.input-div {
+    border-bottom: 1px solid #333;
+    background-color: #f8f8f8;
+    padding: 0px;
+    height: 1.75rem;
+    display: flex;
+}
+
+.user-div {
+    justify-content: start;
+}
+
+.eye-div {
+    justify-content: space-between;
+}
+
+.sign-in-form input {
+    border: none;
+    background-color: #f8f8f8;
+}
+
+.sign-in-form-button {
+    border: none;
+    background-color: #115EA3;
+    height: auto;
+    color: white;
+    border-radius: 5px;
+}
+
+.sign-up {
+    border: none;
+    background-color: #f8f8f8;
+    color: #115EA3;
+    font-weight: 500;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+}
+
+.input-div input:focus {
+    outline: none;
+}
+
+::placeholder {
+    color: #333;
+  }
 
 .eye {
     cursor: pointer;
+}
+
+.signed-in-toggle-div {
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.faCheck {
+    opacity: 0.8;
+    color: green;
+}
+
+.faX {
+    opacity: 0.8;
+    color: red;
+}
+
+.error-div {
+    height: .5rem;
 }
