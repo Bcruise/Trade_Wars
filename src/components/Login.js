@@ -25,12 +25,28 @@ function Login({setWhichComponent}) {
   const [usernameCarrier, setUsernameCarrier] = useState('');
   const [passwordCarrier, setPasswordCarrier] = useState('');
   const [errorMessage, setErrorMessage] = useState(false);
-  const checkDetails = () => {  
+  const [player, setPlayer] = useState({
+    "username": "",
+    "password": "",
+    "balance": 100000,
+    "trades": [],
+    "trade-history": []
+  });
+
+  const CheckDetails = () => {  
   if (usernameCarrier.length < 1 || passwordCarrier.length < 1) {
       setErrorMessage(true);
     } else {
       setErrorMessage(false);
     }
+  }
+  
+  const AddPlayerDetails = () => {
+    setPlayer(prev => ({
+      ...prev,      
+      "username": usernameCarrier,
+      "password": passwordCarrier
+    }));
   }
 
   return (
@@ -56,9 +72,9 @@ function Login({setWhichComponent}) {
                 {!keepMeSignedIn &&<FontAwesomeIcon className="col-2 faX" icon={faX} />}
                 <span className="col-8">Keep me signed in</span>
               </div>}
-              {loginOrRegister === 'Login' && <><button className="m-3 p-2 col-8 sign-in-form-button" onClick={() => checkDetails()}>SIGN IN</button>
+              {loginOrRegister === 'Login' && <><button className="m-3 p-2 col-8 sign-in-form-button" onClick={() => {CheckDetails(); AddPlayerDetails()}}>SIGN IN</button>
               <span className="m-2">Or</span></>}
-              <button onClick={() => {setLoginOrRegister('Register'); checkDetails()}} className="m-3 sign-up">Sign Up</button>
+              <button onClick={() => {setLoginOrRegister('Register'); CheckDetails(); AddPlayerDetails()}} className="m-3 sign-up">Sign Up</button>
             </div>
         </div>
     </div>

@@ -35,4 +35,12 @@ nav {
 .option {
     border: 1px solid black;
     background-color: aliceblue;
+    display: flex;
+    flex-direction: row;
+}
+
+.option div {
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }
