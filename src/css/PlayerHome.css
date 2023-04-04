@@ -44,3 +44,13 @@ nav {
     justify-content: start;
     align-items: center;
 }
+
+.buy {
+    background-color: green;
+    color: black;
+}
+
+.sell {
+    background-color: red;
+    color: black;
+}

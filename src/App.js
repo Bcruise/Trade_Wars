@@ -4,19 +4,51 @@ import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Leaderboard from './components/Leaderboard';
 import {HashRouter as  Router, Routes, Route} from 'react-router-dom';
-import {useState} from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
 
   const [whichComponent, setWhichComponent] = useState('');
+
+  const [player, setPlayer] = useState({
+    "username": "",
+    "password": "",
+    "permSignedIn": false,
+    "balance": 100000,
+    "trades": [],
+    "tradeHistory": []
+  });
   
+  useEffect(() => {
+    // When the component mounts, check for a previously signed-in user
+    if (localStorage.getItem('player') !== null) {
+      setPlayer(JSON.parse(localStorage.getItem('player')));
+    } 
+  },[]);
+
+  useEffect(() => {
+    // When the player object changes, store the updated player in local storage
+    if (player.username !== '') {
+      localStorage.setItem('player', JSON.stringify(player));
+    }
+  }, [player]);
+  
+  console.log(player.permSignedIn)
   return (
     <Router>
       <>
-        <Navbar whichComponent={whichComponent} />
+        <Navbar whichComponent={whichComponent} player={player}/>
           <Routes>
-            <Route path="/" element={<Login setWhichComponent={setWhichComponent}/>} />
-            <Route path="/PlayerHome" element={<PlayerHome setWhichComponent={setWhichComponent}/>} />
+            {player.permSignedIn === false ? 
+              <Route path="/" element={<Login setWhichComponent={setWhichComponent} player={player} setPlayer={setPlayer}/>} /> 
+              :
+              <Route path="/Login" element={<Login setWhichComponent={setWhichComponent} player={player} setPlayer={setPlayer}/>} />
+            }
+            {player.permSignedIn === true ? 
+              <Route path="/" element={<PlayerHome setWhichComponent={setWhichComponent}/>} />
+              :
+              <Route path="/PlayerHome" element={<PlayerHome setWhichComponent={setWhichComponent}/>} />
+            }
             <Route path="/Leaderboard" element={<Leaderboard setWhichComponent={setWhichComponent}/>} />
           </Routes>
       </>

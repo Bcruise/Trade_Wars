@@ -48,11 +48,15 @@
     background-color: #f8f8f8;
 }
 
-.sign-in-form-button {
+.sign-in-form-button, .sign-in-form-button:hover, .sign-in-form-button:focus, .sign-in-form-button:active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
     border: none;
     background-color: #115EA3;
-    height: auto;
     color: white;
+    height: auto;
     border-radius: 5px;
 }
 
