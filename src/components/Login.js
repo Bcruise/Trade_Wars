@@ -55,7 +55,7 @@ console.log(usernameCarrier)
   }
 
   useEffect(() => {
-    if (player.username == usernameCarrier && player.password == passwordCarrier && pagePath !== `/PlayerHome`) {
+    if (player.username == usernameCarrier && player.password == passwordCarrier && pagePath !== `/PlayerHome` && player.permSignedIn === true) {
       setPagePath(`/PlayerHome`);
     } else {
       setPagePath(``);

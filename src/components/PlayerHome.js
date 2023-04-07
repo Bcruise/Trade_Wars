@@ -8,44 +8,49 @@ function PlayerHome({setWhichComponent}) {
   setWhichComponent('Player Home');
 
   //get data
-  const [coinData, setCoinData] = useState([]);
-
+  const [coinData, setCoinData] = useState();
+  const [shownData, setShownData] = useState([]);
+  
   useEffect(() => {
-    axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false')
+    let data = [];
+    axios.get(
+      'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false'
+    )
     .then(function (response) {
-      if (coinData.length == 0) {
-        setCoinData(prevCoinData => {
-          const newData = [];
-          for (let a = 0; a < 10; a++) {
-            if (coinData === a) {
-              newData.push({ 
-                Name: response.data[a].name,
-                Current_Price: response.data[a].current_price,
-                Rank: response.data[a].market_cap_rank
-              });
-            }
-          }
-          return [...prevCoinData, ...newData];
-        });
-      }
+      data = response.data;
+      setCoinData(data);
+      localStorage.setitem('coinData', JSON.stringify(coinData));
+      setShownData(coinData);
     })
     .catch(function (error) {
-      // handle error
+      {localStorage.getItem(JSON.parse(coinData)) !== null && (setShownData(localStorage.getItem(JSON.parse(coinData))))};
       console.log(error);
     });
+
   },[]);
 
-  const [dataToDisplay, setDataToDisplay] = useState([]);
-
   const FilterCoins = (e) => {
-    
+    coinData.map(coin => coin.name.includes(e) && 
+      setShownData([
+        ...shownData,
+        coin
+      ])
+    )  
+  }
+
+  const BuyNow = () => {
+
+  }
+
+  const SellNow = () => {
+
   }
 
   return (
     <div className="playerHome">
         <div className="input-div">
-            <input onClick={(e) => {
-              FilterCoins();
+            <input onInput={(e) => {
+              FilterCoins(e.target.value);
             }}>
             
             </input>
@@ -54,13 +59,18 @@ function PlayerHome({setWhichComponent}) {
             <div className="asset col-12 p-1">Cryptocurrencies</div>
         </div>
         <div classNames="trade-options-div">
-          {coinData.map(coin => 
-          <div className="option p-3 col-12">
-            <div className="col-3">{coin.Name}</div>
-            <div className="col-3">${coin.Current_Price}</div>
-            <button className="col-3 buy">BUY</button>
-            <button className="col-3 sell">SELL</button>
-          </div>)}
+           
+          {shownData.map(coin => (<div className="option p-3 col-12">
+            <div className="col-3">{coin.name}</div>
+            <div className="col-3">${coin.current_price}</div>
+            <input type="number"></input>
+            <button className="col-3 buy" onClick={() => {
+              BuyNow()
+            }}>BUY</button>
+            <button className="col-3 sell" onClick={() => {
+              SellNow()
+            }}>SELL</button>
+          </div>))}
         </div>
     </div>
   );

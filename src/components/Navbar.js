@@ -12,17 +12,17 @@ function Navbar({whichComponent, player}) {
             {whichComponent === 'Player Home' && 
             
             
-            <Link to="/Leaderboard" className="right col-4">
+            <div className="right col-4">
               <span>${player.balance.toLocaleString('en-US', {
                   minimumFractionDigits: 2,
                   maximumFractionDigits: 2
               })}</span>
-            </Link>}
+            </div>}
 
             {whichComponent === 'Leaderboard' && 
-            <Link to="/PlayerHome" className="right col-4">
+            <div className="right col-4">
               <span>Player Home</span>
-            </Link>}
+            </div>}
 
         </nav>
     );

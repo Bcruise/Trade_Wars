@@ -39,16 +39,14 @@ function App() {
       <>
         <Navbar whichComponent={whichComponent} player={player}/>
           <Routes>
-            {player.permSignedIn === false ? 
+            {player.permSignedIn === false && 
               <Route path="/" element={<Login setWhichComponent={setWhichComponent} player={player} setPlayer={setPlayer}/>} /> 
-              :
-              <Route path="/Login" element={<Login setWhichComponent={setWhichComponent} player={player} setPlayer={setPlayer}/>} />
             }
-            {player.permSignedIn === true ? 
+            {player.permSignedIn === true && 
               <Route path="/" element={<PlayerHome setWhichComponent={setWhichComponent}/>} />
-              :
-              <Route path="/PlayerHome" element={<PlayerHome setWhichComponent={setWhichComponent}/>} />
             }
+            <Route path="/Login" element={<Login setWhichComponent={setWhichComponent} player={player} setPlayer={setPlayer}/>} />
+            <Route path="/PlayerHome" element={<PlayerHome setWhichComponent={setWhichComponent}/>} />
             <Route path="/Leaderboard" element={<Leaderboard setWhichComponent={setWhichComponent}/>} />
           </Routes>
       </>
