@@ -31,6 +31,7 @@ function App() {
     if (player.username !== '') {
       localStorage.setItem('player', JSON.stringify(player));
     }
+    
   }, [player]);
   
   return (
@@ -42,7 +43,7 @@ function App() {
               <Route path="/" element={<Login setWhichComponent={setWhichComponent} player={player} setPlayer={setPlayer}/>} /> 
             }
             {player.permSignedIn === true && 
-              <Route path="/" element={<PlayerHome setWhichComponent={setWhichComponent}/>} />
+              <Route path="/" element={<PlayerHome setWhichComponent={setWhichComponent} player={player} setPlayer={setPlayer}/>} />
             }
             <Route path="/Login" element={<Login setWhichComponent={setWhichComponent} player={player} setPlayer={setPlayer}/>} />
             <Route path="/PlayerHome" element={<PlayerHome setWhichComponent={setWhichComponent} player={player} setPlayer={setPlayer}/>} />
