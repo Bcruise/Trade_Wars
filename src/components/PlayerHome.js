@@ -1,57 +1,38 @@
 import '../css/PlayerHome.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import BuySection from './BuySection';
 
-function PlayerHome({setWhichComponent}) {
+function PlayerHome({setWhichComponent, player, setPlayer}) {
 
   // do show leaderboard link but not return link
   setWhichComponent('Player Home');
 
   //get data
-  const [coinData, setCoinData] = useState();
-  const [shownData, setShownData] = useState([]);
+  const [coinData, setCoinData] = useState([]);
+  const [shownData, setShownData] = useState([]);  
   
   useEffect(() => {
-    let data = [];
     axios.get(
       'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false'
     )
     .then(function (response) {
-      data = response.data;
+      const data = response.data;
       setCoinData(data);
-      localStorage.setitem('coinData', JSON.stringify(coinData));
-      setShownData(coinData);
+      setShownData(data);
     })
     .catch(function (error) {
-      {localStorage.getItem(JSON.parse(coinData)) !== null && (setShownData(localStorage.getItem(JSON.parse(coinData))))};
       console.log(error);
     });
-
   },[]);
-
-  const FilterCoins = (e) => {
-    coinData.map(coin => coin.name.includes(e) && 
-      setShownData([
-        ...shownData,
-        coin
-      ])
-    )  
-  }
-
-  const BuyNow = () => {
-
-  }
-
-  const SellNow = () => {
-
-  }
 
   return (
     <div className="playerHome">
         <div className="input-div">
             <input onInput={(e) => {
-              FilterCoins(e.target.value);
-            }}>
+              const filteredData = coinData.filter(coin => coin.name.toLowerCase().includes(e.target.value.toLowerCase()));
+              setShownData(filteredData);
+            }} placeholder="Search coins here..." className="p-1">
             
             </input>
         </div>
@@ -62,14 +43,11 @@ function PlayerHome({setWhichComponent}) {
            
           {shownData.map(coin => (<div className="option p-3 col-12">
             <div className="col-3">{coin.name}</div>
-            <div className="col-3">${coin.current_price}</div>
-            <input type="number"></input>
-            <button className="col-3 buy" onClick={() => {
-              BuyNow()
-            }}>BUY</button>
-            <button className="col-3 sell" onClick={() => {
-              SellNow()
-            }}>SELL</button>
+            <div className="col-3">${coin.current_price.toLocaleString('en-US', {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2
+              })}</div>
+            <BuySection player={player} setPlayer={setPlayer} coin={coin}/>
           </div>))}
         </div>
     </div>

@@ -33,7 +33,6 @@ function App() {
     }
   }, [player]);
   
-  console.log(player.permSignedIn)
   return (
     <Router>
       <>
@@ -46,7 +45,7 @@ function App() {
               <Route path="/" element={<PlayerHome setWhichComponent={setWhichComponent}/>} />
             }
             <Route path="/Login" element={<Login setWhichComponent={setWhichComponent} player={player} setPlayer={setPlayer}/>} />
-            <Route path="/PlayerHome" element={<PlayerHome setWhichComponent={setWhichComponent}/>} />
+            <Route path="/PlayerHome" element={<PlayerHome setWhichComponent={setWhichComponent} player={player} setPlayer={setPlayer}/>} />
             <Route path="/Leaderboard" element={<Leaderboard setWhichComponent={setWhichComponent}/>} />
           </Routes>
       </>
