@@ -23,9 +23,14 @@ function Login({player, setPlayer}) {
   const [usernameCarrier, setUsernameCarrier] = useState('');
   const [passwordCarrier, setPasswordCarrier] = useState('');
   const [errorMessage, setErrorMessage] = useState(false);
-console.log(usernameCarrier)
+  
   const StaySignedInConfirmation = () => {
-    if (keepMeSignedIn === true) {
+    if (keepMeSignedIn === true && player.username == usernameCarrier && player.password == passwordCarrier) {
+      setPlayer(prev => ({
+        ...prev,      
+        "permSignedIn": true
+      }));
+    } else if (keepMeSignedIn === true && usernameCarrier.length > 0 && passwordCarrier.length > 0 && localStorage.getItem('player') == null) {
       setPlayer(prev => ({
         ...prev,      
         "permSignedIn": true
@@ -44,24 +49,35 @@ console.log(usernameCarrier)
     } else {
       setErrorMessage(false);    
     }
+
+    if (player.username !== usernameCarrier || player.password !== passwordCarrier) {
+      if (localStorage.getItem('player') !== null) {
+        alert('Input the correct name and password');
+      }
+      setKeepMeSignedIn(false);
+      setPlayer(prev => ({
+        ...prev,      
+        "permSignedIn": false
+      }));
+    }
   }
   
   const AddPlayerDetails = () => {
-    setPlayer(prev => ({
-      ...prev,      
-      "username": usernameCarrier,
-      "password": passwordCarrier
-    }));
+    if (player.username == '' && player.password == '') {
+      setPlayer(prev => ({
+        ...prev,      
+        "username": usernameCarrier,
+        "password": passwordCarrier
+      }));
+    }
   }
 
   useEffect(() => {
-    if (player.username == usernameCarrier && player.password == passwordCarrier && pagePath !== `/PlayerHome` && player.permSignedIn === true) {
+    if (player.username == usernameCarrier && player.password == passwordCarrier && pagePath !== `/PlayerHome`) {
       setPagePath(`/PlayerHome`);
-    } else {
-      setPagePath(``);
-    }
+    } 
   }, [usernameCarrier, passwordCarrier])
-  
+ 
   
   return (
     <div className="login">

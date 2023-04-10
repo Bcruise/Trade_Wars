@@ -31,7 +31,7 @@ function App() {
     if (player.username !== '') {
       localStorage.setItem('player', JSON.stringify(player));
     }
-    
+    console.log(player)    
   }, [player]);
   
   return (
