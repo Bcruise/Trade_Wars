@@ -15,8 +15,7 @@ function App() {
     "password": "",
     "permSignedIn": false,
     "balance": 100000,
-    "trades": [],
-    "tradeHistory": []
+    "trades": []
   });
   
   useEffect(() => {

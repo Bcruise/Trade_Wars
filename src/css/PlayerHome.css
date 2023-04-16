@@ -33,8 +33,8 @@ input {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
     border: 1px solid black;
+    cursor: pointer;
 }
 
 .option {
@@ -54,10 +54,23 @@ input {
 
 .buy {
     background-color: green;
-    color: black;
+    color: white;
 }
 
 .sell {
     background-color: red;
-    color: black;
+    color: white;
+}
+
+.fa-sort-down {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: .5rem;
+    cursor: pointer;
+}
+
+.trade {
+    padding: .5rem 2rem;
+    background-color:azure;
+    font-size: .9rem;
 }

@@ -1,12 +1,15 @@
 import '../css/PlayerHome.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import BuySection from './BuySection';
+import Cryptocurrencies from './Cryptocurrencies';
+import Trades from './Trades';
 
 function PlayerHome({setWhichComponent, player, setPlayer}) {
 
   // do show leaderboard link but not return link
   setWhichComponent('Player Home');
+
+  const [chosenPage, setChosenPage] = useState('Cryptocurrencies');
 
   //get data
   const [coinData, setCoinData] = useState([]);
@@ -37,21 +40,16 @@ function PlayerHome({setWhichComponent, player, setPlayer}) {
             </input>
         </div>
         <div className="asset-classes">
-            <div className="asset col-12 p-1">Cryptocurrencies</div>
+            <div className="asset col-6 p-1" style={chosenPage === 'Cryptocurrencies' ? {backgroundColor: 'rgb(16,60,93)', color: 'white'} : {backgroundColor: 'white'}} 
+              onClick={() => setChosenPage('Cryptocurrencies')}>Cryptocurrencies</div>
+            <div className="asset col-6 p-1" style={chosenPage === 'Trades' ? {backgroundColor: 'rgb(16,60,93)', color: 'white'} : {backgroundColor: 'white'}}
+              onClick={() => setChosenPage('Trades')}>Trades</div>
         </div>
-        <div classNames="trade-options-div">
-          {shownData.length == 0 && <div className="option p-3 col-12">
-              <span>There are currently no coins available. Please check back later for the latest prices.</span>
-            </div>}
-          {shownData.map(coin => (<div className="option p-3 col-12">
-            <div className="col-3">{coin.name}</div>
-            <div className="col-3">${coin.current_price.toLocaleString('en-US', {
-                  minimumFractionDigits: 2,
-                  maximumFractionDigits: 2
-              })}</div>
-            <BuySection player={player} setPlayer={setPlayer} coin={coin}/>
-          </div>))}
-        </div>
+        {chosenPage === 'Cryptocurrencies' ? 
+          <Cryptocurrencies shownData={shownData} player={player} setPlayer={setPlayer}/>
+          :
+          <Trades player={player} shownData={shownData} />
+        }
     </div>
   );
 }
