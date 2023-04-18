@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Cryptocurrencies from './Cryptocurrencies';
 import Trades from './Trades';
-//import { insertDocument } from './MongoDB';
+import { insertDocument } from './MongoDB';
 
 function PlayerHome({setWhichComponent, player, setPlayer}) {
 
@@ -12,12 +12,12 @@ function PlayerHome({setWhichComponent, player, setPlayer}) {
 
   const [chosenPage, setChosenPage] = useState('Cryptocurrencies');
 
-  /*let testObj = {
+  let testObj = {
     name: 'Ben',
     age: 2
   }
 
-  insertDocument(testObj);*/
+  insertDocument(testObj);
 
   //get data
   const [coinData, setCoinData] = useState([]);
