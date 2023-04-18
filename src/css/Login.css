@@ -2,8 +2,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     width: 100vw;
-    height: calc(100vh - 80px);
+    height: auto;
 }
 
 .form-main {
@@ -96,4 +97,15 @@
 
 .error-div {
     height: .5rem;
+}
+
+.form-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lilita One', sans-serif;
+    color: #333;
+    font-size: 1.75rem;
+    text-align: center;
+    background-color: #f8f8f8;
 }

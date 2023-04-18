@@ -2,7 +2,7 @@ import '../css/Login.css';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faCheck, faX } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faCheck, faX, faCrown } from '@fortawesome/free-solid-svg-icons';
 
 function Login({player, setPlayer}) {
 
@@ -81,6 +81,11 @@ function Login({player, setPlayer}) {
   
   return (
     <div className="login">
+        <div className="form-title p-4 my-1 col-lg-4 col-md-10">
+            <FontAwesomeIcon icon={faCrown} />
+            <span>Trade your favourite Cryptocurrencies</span>
+            <FontAwesomeIcon icon={faCrown} />
+        </div>
         <div className="form-main col-lg-4 col-md-10">
             <div className="sign-in-form p-3">
               {localStorage.getItem('player', player) !== null ? <span className="header m-4">Sign In</span> : <span className="header m-4">Register</span>}

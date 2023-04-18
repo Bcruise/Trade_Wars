@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Cryptocurrencies from './Cryptocurrencies';
 import Trades from './Trades';
+//import { insertDocument } from './MongoDB';
 
 function PlayerHome({setWhichComponent, player, setPlayer}) {
 
@@ -10,6 +11,13 @@ function PlayerHome({setWhichComponent, player, setPlayer}) {
   setWhichComponent('Player Home');
 
   const [chosenPage, setChosenPage] = useState('Cryptocurrencies');
+
+  /*let testObj = {
+    name: 'Ben',
+    age: 2
+  }
+
+  insertDocument(testObj);*/
 
   //get data
   const [coinData, setCoinData] = useState([]);
@@ -28,6 +36,8 @@ function PlayerHome({setWhichComponent, player, setPlayer}) {
       console.log(error);
     });
   },[]);
+
+
 
   return (
     <div className="playerHome">

@@ -1,6 +1,6 @@
 {
   "name": "personaltradewars",
-  "homepage": "https://Bcruise.github.io/Trade_Wars",
+  "homepage": "https://euphonious-lebkuchen-9707f4.netlify.app/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,6 +13,7 @@
     "aws-sdk": "^2.1347.0",
     "axios": "^1.3.4",
     "bootstrap": "^5.2.3",
+    "mongodb": "^5.3.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
     "react-dom": "^18.2.0",
@@ -22,13 +23,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
+ },
   "eslintConfig": {
     "extends": [
       "react-app",

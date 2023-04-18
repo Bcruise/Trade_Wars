@@ -30,11 +30,11 @@ function Trades({player, shownData}) {
           <>
             <div className="option p-3 col-12">
               <span>{item.name}</span>
-              <span>${item.average.toLocaleString('en-US', {
+              <span>Avg price - ${item.average.toLocaleString('en-US', {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
               })}</span>
-              <span>${item.profit.toLocaleString('en-US', {
+              <span>P/L - ${item.profit.toLocaleString('en-US', {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
               })}</span>
@@ -43,7 +43,7 @@ function Trades({player, shownData}) {
               {player.trades.map(trade => trade.name === item.name && 
                 <div className="option trade col-12">
                   <span>{trade.name}</span>
-                  <span>${trade.price.toLocaleString('en-US', {
+                  <span>Price - ${trade.price.toLocaleString('en-US', {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                   })}</span>
