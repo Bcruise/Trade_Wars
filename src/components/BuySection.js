@@ -6,16 +6,20 @@ function BuySection({player, setPlayer, coin}) {
     const [carrier, setCarrier] = useState(0);
 
     const BuyNow = (coin, price) => {
-    
+
         // Check if the player has enough balance to make the trade
         if ((player.balance - (carrier * price)) >= 0 && carrier > 0) {
-    
+            
             // Create an array of new trades to add to the player's trades
             let newTrades = [];
+            let playerTradeHistoryQTY = player.tradeQTY
+
             for (let a = 0; a < carrier; a++) {
+                playerTradeHistoryQTY ++
                 newTrades.push({
                     name: coin,
-                    price: price
+                    price: price,
+                    key: player.tradeQTY + a
                 });
             }
             
@@ -26,6 +30,7 @@ function BuySection({player, setPlayer, coin}) {
                     ...player.trades,
                     ...newTrades
                 ],
+                tradeQTY: playerTradeHistoryQTY,
                 balance: player.balance - (carrier * price)
             };
             // Set the new player object using the setPlayer function and reset the carrier state to 0

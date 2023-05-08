@@ -48,8 +48,9 @@ input {
 
 .option div {
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
     align-items: center;
+    padding: .5rem;
 }
 
 .buy {
@@ -60,6 +61,7 @@ input {
 .sell {
     background-color: red;
     color: white;
+    cursor: pointer;
 }
 
 .fa-sort-down {
@@ -73,4 +75,9 @@ input {
     padding: .5rem 2rem;
     background-color:azure;
     font-size: .9rem;
+}
+
+.sell {
+    border: 1px solid red;
+    border-radius: 1px;
 }

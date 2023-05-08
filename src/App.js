@@ -15,7 +15,8 @@ function App() {
     "password": "",
     "permSignedIn": false,
     "balance": 100000,
-    "trades": []
+    "trades": [],
+    "tradeQTY": 0
   });
   
   useEffect(() => {
@@ -29,8 +30,8 @@ function App() {
     // When the player object changes, store the updated player in local storage
     if (player.username !== '') {
       localStorage.setItem('player', JSON.stringify(player));
-    }
-    console.log(player)    
+    }    
+    console.log(player)
   }, [player]);
   
   return (
