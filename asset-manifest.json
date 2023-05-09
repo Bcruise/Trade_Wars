@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/Trade_Wars/static/css/main.0152e45a.css",
-    "main.js": "/Trade_Wars/static/js/main.c2dea159.js",
+    "main.css": "/Trade_Wars/static/css/main.6988ebf9.css",
+    "main.js": "/Trade_Wars/static/js/main.99057a98.js",
     "static/media/login-background.png": "/Trade_Wars/static/media/login-background.824d789c7453d6f2c6ab.png",
     "index.html": "/Trade_Wars/index.html",
-    "main.0152e45a.css.map": "/Trade_Wars/static/css/main.0152e45a.css.map",
-    "main.c2dea159.js.map": "/Trade_Wars/static/js/main.c2dea159.js.map"
+    "main.6988ebf9.css.map": "/Trade_Wars/static/css/main.6988ebf9.css.map",
+    "main.99057a98.js.map": "/Trade_Wars/static/js/main.99057a98.js.map"
   },
   "entrypoints": [
-    "static/css/main.0152e45a.css",
-    "static/js/main.c2dea159.js"
+    "static/css/main.6988ebf9.css",
+    "static/js/main.99057a98.js"
   ]
 }
