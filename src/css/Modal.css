@@ -1,0 +1,11 @@
+.modal-footer {
+    border-top: none !important;
+}
+
+.modal-header{
+    border-bottom: none !important;
+}
+
+.btn {
+    font-size: .8rem !important;
+}

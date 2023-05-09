@@ -1,5 +1,4 @@
 import '../css/Navbar.css';
-import { Link } from 'react-router-dom';
 
 function Navbar({whichComponent, player}) {
 

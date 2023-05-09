@@ -31,7 +31,6 @@ function PlayerHome({setWhichComponent, player, setPlayer}) {
   },[]);
 
 
-
   return (
     <div className="playerHome">
         <div className="input-div">

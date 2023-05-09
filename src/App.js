@@ -3,6 +3,7 @@ import PlayerHome from './components/PlayerHome';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Leaderboard from './components/Leaderboard';
+import Modal from './components/Modal';
 import {HashRouter as  Router, Routes, Route} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
@@ -38,6 +39,7 @@ function App() {
     <Router>
       <>
         <Navbar whichComponent={whichComponent} player={player}/>
+        <Modal />
           <Routes>
             {player.permSignedIn === false && 
               <Route path="/" element={<Login setWhichComponent={setWhichComponent} player={player} setPlayer={setPlayer}/>} /> 
