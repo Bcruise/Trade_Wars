@@ -9,3 +9,13 @@
 .btn {
     font-size: .8rem !important;
 }
+
+.modal {
+    display: unset !important;
+    width: 20rem !important;
+    height: auto !important;
+    margin-left: calc(50vw - 10rem) !important;
+    margin-left: calc(50vw - 10rem) !important;
+    top: unset !important;
+    left: unset !important;
+}

@@ -1,7 +1,7 @@
 import '../css/PlayerHome.css';
 import BuySection from './BuySection';
 
-function Cryptocurrencies({shownData, player, setPlayer}) {
+function Cryptocurrencies({shownData, player, setPlayer, setModal, setSetModal}) {
 
   return (
         <div classNames="trade-options-div">
@@ -14,7 +14,7 @@ function Cryptocurrencies({shownData, player, setPlayer}) {
                   minimumFractionDigits: 2,
                   maximumFractionDigits: 2
               })}</div>
-            <BuySection player={player} setPlayer={setPlayer} coin={coin}/>
+            <BuySection player={player} setPlayer={setPlayer} coin={coin} setModal={setModal} setSetModal={setSetModal}/>
           </div>))}
         </div>
   );

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function BuySection({player, setPlayer, coin}) {
+function BuySection({player, setPlayer, coin, setModal, setSetModal}) {
     
     // Declare and initialize carrier state using useState
     const [carrier, setCarrier] = useState(0);
@@ -38,11 +38,11 @@ function BuySection({player, setPlayer, coin}) {
             setCarrier(0);
         } else if ((player.balance - (carrier * price)) < 0){
             // Display an alert if the player does not have enough balance to make the trade
-            alert("Your balance doesn't allow for that trade");
+            setSetModal(prevState => ({ ...prevState, show: true, message: "Your balance doesn't allow for that trade"}));
             setCarrier(0);
         } else {
             // Display an alert if the carrier input is 0 or less
-            alert("Input a quantity higher than 0");
+            setSetModal(prevState => ({ ...prevState, show: true, message: "Input a higher quantity than zero"}));
         }
     };
     
@@ -70,10 +70,10 @@ function BuySection({player, setPlayer, coin}) {
             })
         } else if (carrier == 0) {
             // Display an alert if the carrier input is 0 or less
-            alert('Increase the sell quantity to more than one.');
+            setSetModal(prevState => ({ ...prevState, show: true, message: "Increase the sell quantity to more than one."}));
         } else {
             // Display an alert if the player does not have enough of the coin to sell the chosen quantity
-            alert('You are not holding enough of that coin to sell the chosen quantity.')
+            setSetModal(prevState => ({ ...prevState, show: true, message: "You are not holding enough of that coin to sell the chosen quantity."}));
         }
     }
 

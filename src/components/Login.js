@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faCheck, faX, faCrown } from '@fortawesome/free-solid-svg-icons';
 
-function Login({player, setPlayer}) {
+function Login({player, setPlayer, setModal, setSetModal}) {
 
   const [passwordShowOrTell, setPasswordShowOrTell] = useState('password');
   const [keepMeSignedIn, setKeepMeSignedIn] = useState(false);
@@ -52,7 +52,7 @@ function Login({player, setPlayer}) {
 
     if (player.username !== usernameCarrier || player.password !== passwordCarrier) {
       if (localStorage.getItem('player') !== null) {
-        alert('Input the correct name and password');
+        setSetModal(prevState => ({ ...prevState, show: true, message: "Input the correct name and password"}));
       }
       setKeepMeSignedIn(false);
       setPlayer(prev => ({

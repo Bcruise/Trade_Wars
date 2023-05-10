@@ -4,7 +4,7 @@ import axios from 'axios';
 import Cryptocurrencies from './Cryptocurrencies';
 import Trades from './Trades';
 
-function PlayerHome({setWhichComponent, player, setPlayer}) {
+function PlayerHome({setWhichComponent, player, setPlayer, setModal, setSetModal}) {
 
   // do show leaderboard link but not return link
   setWhichComponent('Player Home');
@@ -48,7 +48,7 @@ function PlayerHome({setWhichComponent, player, setPlayer}) {
               onClick={() => setChosenPage('Trades')}>Trades</div>
         </div>
         {chosenPage === 'Cryptocurrencies' ? 
-          <Cryptocurrencies shownData={shownData} player={player} setPlayer={setPlayer}/>
+          <Cryptocurrencies shownData={shownData} player={player} setPlayer={setPlayer} setModal={setModal} setSetModal={setSetModal}/>
           :
           <Trades player={player} setPlayer={setPlayer} shownData={shownData} />
         }
