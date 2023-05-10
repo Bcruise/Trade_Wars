@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# Trade Wars - Buy and Sell Cryptocurrency Demo Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to Trade Wars, a demo website game where you can practice buying and selling cryptocurrency in a simulated trading environment. This game is designed to help users get a better understanding of the cryptocurrency market and to learn how to trade effectively.
 
-## Available Scripts
+## How to Play
 
-In the project directory, you can run:
+- Start by creating an account on the Trade Wars website.
+- Once you're logged in, you will be given a demo account with a certain amount of virtual currency.
+- You can use this virtual currency to buy and sell different types of cryptocurrency on the platform.
+- You can track the value of your investments and monitor the performance of the cryptocurrency market.
+- The goal of the game is to maximize your profits by making smart trades and taking calculated risks.
+- Remember that this is just a demo game, and any profits or losses you make are purely virtual.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- User-friendly interface: The Trade Wars website is designed to be intuitive and easy to navigate.
+- Real-time market data: The game uses real-time market data to simulate the cryptocurrency market, so you can get a realistic trading experience.
+- Variety of cryptocurrencies: You can trade a variety of popular cryptocurrencies such as Bitcoin, Ethereum, and Litecoin.
+- Detailed trade history: You can view a detailed history of all your trades, including the amount of cryptocurrency bought or sold, the price, and the date.
+- No real money involved: Since this is a demo game, you won't be risking any real money. All trades are conducted using virtual currency.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+To get started with Trade Wars, simply visit our website and create an account. Once you've logged in, you can start trading immediately. If you need help or have any questions, please contact me at ben_cruise@hotmail.co.uk
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Feedback and Support
 
-### `npm run build`
+We welcome any feedback you may have about Trade Wars. If you encounter any issues or have any suggestions for how we can improve the game, please let me know.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Conclusion
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Trade Wars is a fun and educational way to learn about the cryptocurrency market and practice your trading skills. With a user-friendly interface and real-time market data, you can get a realistic trading experience without risking any real money. So what are you waiting for? Sign up for Trade Wars today and start trading!
