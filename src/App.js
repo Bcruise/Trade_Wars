@@ -3,7 +3,6 @@ import PlayerHome from './components/PlayerHome';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Leaderboard from './components/Leaderboard';
-import Modal from './components/Modal';
 import './css/Modal.css';
 import {HashRouter as  Router, Routes, Route} from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -18,7 +17,8 @@ function App() {
     "permSignedIn": false,
     "balance": 100000,
     "trades": [],
-    "tradeQTY": 0
+    "tradeQTY": 0,
+    "loginCompleted": false
   });
 
   const [setModal, setSetModal] = useState({
@@ -38,25 +38,22 @@ function App() {
     if (player.username !== '') {
       localStorage.setItem('player', JSON.stringify(player));
     }    
-    console.log(player)
   }, [player]);
-
-
   
+
   return (
     <Router>
       <>
         <Navbar whichComponent={whichComponent} player={player}/>
-        <Modal setModal={setModal} setSetModal={setSetModal}/>
           <Routes>
-            {player.permSignedIn === false && 
-              <Route path="/" element={<Login setWhichComponent={setWhichComponent} player={player} setPlayer={setPlayer} setModal={setModal} setSetModal={setSetModal}/>} /> 
+            {player.permSignedIn !== true || player.loginCompleted !== true && 
+              <Route path="/" element={<Login setWhichComponent={setWhichComponent} player={player} setPlayer={setPlayer} />} /> 
             }
-            {player.permSignedIn === true && 
-              <Route path="/" element={<PlayerHome setWhichComponent={setWhichComponent} player={player} setPlayer={setPlayer} setModal={setModal} setSetModal={setSetModal}/>} />
+            {player.permSignedIn && player.loginCompleted &&
+              <Route path="/" element={<PlayerHome setWhichComponent={setWhichComponent} player={player} setPlayer={setPlayer} />} />
             }
-            <Route path="/Login" element={<Login setWhichComponent={setWhichComponent} player={player} setPlayer={setPlayer} setModal={setModal} setSetModal={setSetModal}/>} />
-            <Route path="/PlayerHome" element={<PlayerHome setWhichComponent={setWhichComponent} player={player} setPlayer={setPlayer} setModal={setModal} setSetModal={setSetModal}/>} />
+            <Route path="/Login" element={<Login setWhichComponent={setWhichComponent} player={player} setPlayer={setPlayer} />} />
+            <Route path="/PlayerHome" element={<PlayerHome setWhichComponent={setWhichComponent} player={player} setPlayer={setPlayer} />} />
             <Route path="/Leaderboard" element={<Leaderboard setWhichComponent={setWhichComponent}/>} />
           </Routes>
       </>

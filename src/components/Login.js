@@ -3,122 +3,113 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faCheck, faX, faCrown } from '@fortawesome/free-solid-svg-icons';
+import $ from 'jquery';
 
-function Login({player, setPlayer, setModal, setSetModal}) {
+function Login({player, setPlayer}) {
 
-  const [passwordShowOrTell, setPasswordShowOrTell] = useState('password');
-  const [keepMeSignedIn, setKeepMeSignedIn] = useState(false);
-  const [pagePath, setPagePath] = useState('');
-
-  //toggle password viewability on click
-  const doesPasswordShow = () => {
-    if (passwordShowOrTell === 'password') {
-      setPasswordShowOrTell('text');
-    } else {
-      setPasswordShowOrTell('password');
-    }
-  }
+  const [passwordVerified, setPasswordVerified] = useState(false);
+  const [usernameVerified, setUsernameVerified] = useState(false);
   
-  // for sign in
-  const [usernameCarrier, setUsernameCarrier] = useState('');
-  const [passwordCarrier, setPasswordCarrier] = useState('');
-  const [errorMessage, setErrorMessage] = useState(false);
-  
-  const StaySignedInConfirmation = () => {
-    if (keepMeSignedIn === true && player.username == usernameCarrier && player.password == passwordCarrier) {
-      setPlayer(prev => ({
-        ...prev,      
-        "permSignedIn": true
-      }));
-    } else if (keepMeSignedIn === true && usernameCarrier.length > 0 && passwordCarrier.length > 0 && localStorage.getItem('player') == null) {
-      setPlayer(prev => ({
-        ...prev,      
-        "permSignedIn": true
-      }));
-    } else {
-      setPlayer(prev => ({
-        ...prev,      
-        "permSignedIn": false
-      }));
-    }
-  }
-
-  const CheckDetails = () => {  
-    if (usernameCarrier.length < 1 || passwordCarrier.length < 1) {
-      setErrorMessage(true);
-    } else {
-      setErrorMessage(false);    
-    }
-
-    if (player.username !== usernameCarrier || player.password !== passwordCarrier) {
-      if (localStorage.getItem('player') !== null) {
-        setSetModal(prevState => ({ ...prevState, show: true, message: "Input the correct name and password"}));
-      }
-      setKeepMeSignedIn(false);
-      setPlayer(prev => ({
-        ...prev,      
-        "permSignedIn": false
-      }));
-    }
-  }
-  
-  const AddPlayerDetails = () => {
-    if (player.username == '' && player.password == '') {
-      setPlayer(prev => ({
-        ...prev,      
-        "username": usernameCarrier,
-        "password": passwordCarrier
-      }));
-    }
-  }
-
-  useEffect(() => {
-    if (player.username == usernameCarrier && player.password == passwordCarrier && pagePath !== `/PlayerHome`) {
-      setPagePath(`/PlayerHome`);
-    } 
-  }, [usernameCarrier, passwordCarrier])
- 
-  
-  return (
-    <div className="login">
-        <div className="form-title p-4 my-1 col-lg-4 col-md-10">
-            <FontAwesomeIcon icon={faCrown} />
-            <span>Trade your favourite Cryptocurrencies</span>
-            <FontAwesomeIcon icon={faCrown} />
-        </div>
-        <div className="form-main col-lg-4 col-md-10">
-            <div className="sign-in-form p-3">
-              {localStorage.getItem('player', player) !== null ? <span className="header m-4">Sign In</span> : <span className="header m-4">Register</span>}
-              <div className="error-div">
-                {errorMessage && 
-                  <span className="error-message">*Enter both a username and password</span>
-                }
-              </div>
+  // Password input - Start
+  const PasswordUsernameInput = () => {
+    const [revealPasswordType, setRevealPasswordType] = useState('password');
+    return  <>
               <div className="input-div user-div m-4 col-8">              
-                <input className="col-10" placeholder="Username" onInput={(e) => setUsernameCarrier(e.target.value)}></input>
+                  <input className="col-10" placeholder="Username" onInput={(e)=> {
+                    setPlayer(prev => ({
+                      ...prev,      
+                      "username": e.target.value
+                    })) ; setPasswordVerified(true);
+                  }}></input>
               </div>
               <div className="input-div eye-div m-4 col-8">
-                <input className="col-10" placeholder="Password" type={passwordShowOrTell} onInput={(e) => setPasswordCarrier(e.target.value)}></input>
-                <FontAwesomeIcon icon={faEye} onClick={() => doesPasswordShow()} className="eye"/>
+                <input className="col-10" placeholder="Password" type={revealPasswordType} onInput={(e)=> {
+                  setPlayer(prev => ({
+                    ...prev,      
+                    "password": e.target.value
+                  })) ; setUsernameVerified(true);
+                }}></input>
+                <FontAwesomeIcon icon={faEye} className="eye"
+                  onClick={() => revealPasswordType === 'password' ? setRevealPasswordType('text') : setRevealPasswordType('password')}
+                />
               </div>
-              <div className="signed-in-toggle-div m-4 col-8"
-                onClick={() => keepMeSignedIn === true ? setKeepMeSignedIn(false) : setKeepMeSignedIn(true)}>
-                {keepMeSignedIn && <FontAwesomeIcon className="col-2 faCheck" icon={faCheck} />}
-                {!keepMeSignedIn &&<FontAwesomeIcon className="col-2 faX" icon={faX} />}
-                <span className="col-8">Keep me signed in</span>
+            </>
+  }
+  // Password input - Finish
+
+  // Keep me signed in - Start
+  const [staySignedIn, setStaySignedIn] = useState(false);
+  const KeepMeSignedInButton = () => {
+    return  <div className="signed-in-toggle-div m-4 col-8" onClick={() => staySignedIn === false ? setStaySignedIn(true) : setStaySignedIn(false)}>
+              {staySignedIn ? <FontAwesomeIcon className="col-2 faCheck" icon={faCheck} /> 
+                                :
+                              <FontAwesomeIcon className="col-2 faX" icon={faX} />}
+              <span className="col-8">Keep me signed in</span>
+            </div>;
+  };  
+
+  useEffect(() => {
+    if (staySignedIn) {
+      setPlayer(prev => ({
+        ...prev,      
+        "permSignedIn": true
+      }));
+    } else {
+      setPlayer(prev => ({
+        ...prev,      
+        "permSignedIn": false
+      }));
+    }
+  }, [staySignedIn]);
+  // Keep me signed in - Finish
+
+  // Login button - Start
+  const LoginButton = () => {
+    if (localStorage.getItem('player', player) !== null) {
+        if (usernameVerified && passwordVerified) {
+          setPlayer(prev => ({
+            ...prev,      
+            "loginCompleted": true
+          }));
+          return <Link  to='/PlayerHome' className="m-3 p-2 col-8 sign-in-form-button">SIGN IN</Link>
+        } else {
+          setPlayer(prev => ({
+            ...prev,      
+            "loginCompleted": true
+          }));
+          return <Link className="m-3 p-2 col-8 sign-in-form-button">SIGN IN</Link>
+        }
+    } else {
+        if (usernameVerified && passwordVerified) {
+          return <Link to='/PlayerHome' className="m-3 sign-up">Sign Up</Link>
+        } else {
+          return <Link className="m-3 sign-up">Sign Up</Link>
+        }
+    }
+  };
+  // Login button - Finish
+
+  return (
+      <div className="login">
+          <div className="form-title p-4 my-1 col-lg-4 col-md-10">
+              <FontAwesomeIcon icon={faCrown} />
+              <span>Trade your favourite Cryptocurrencies</span>
+              <FontAwesomeIcon icon={faCrown} />
+          </div>
+          <div className="form-main col-lg-4 col-md-10">
+              <div className="sign-in-form p-3">
+                <span className="header m-4">Sign In</span>
+
+                {PasswordUsernameInput()}
+
+                {KeepMeSignedInButton()}
+
+                {LoginButton()}              
+
               </div>
-              {localStorage.getItem('player', player) !== null ? <Link to={pagePath}
-              className="m-3 p-2 col-8 sign-in-form-button"
-              onClick={() => {CheckDetails(); AddPlayerDetails(); StaySignedInConfirmation()}}>
-              SIGN IN
-              </Link> : 
-              <Link to='/PlayerHome' className="m-3 sign-up"
-              onClick={() => {CheckDetails(); AddPlayerDetails(); StaySignedInConfirmation()}} 
-              >Sign Up</Link>}              
-            </div>
-        </div>
-    </div>
-  );
+          </div>
+      </div>
+    );
 }
 
 export default Login;

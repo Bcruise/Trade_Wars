@@ -60,9 +60,13 @@
     font-weight: 500;
 }
 
-.error-message {
+.error-message-username, .error-message-password {
     color: red;
     font-size: 12px;
+}
+
+.hidden-password, .hidden-username {
+    display: none;
 }
 
 .input-div input:focus {
@@ -70,7 +74,7 @@
 }
 
 ::placeholder {
-    color: #333;
+    color: grey;
   }
 
 .eye {
